@@ -1,5 +1,5 @@
 //
-//  LJBaseController.h
+//  LJTabBar.h
 //  WBO
 //
 //  Created by JackLou on 7/20/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LJBaseController : UIViewController
-@property (nonatomic,assign, getter = isLogin) BOOL login;
-
+@interface LJTabBar : UITabBar
 
 @end

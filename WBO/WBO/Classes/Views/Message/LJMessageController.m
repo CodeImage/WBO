@@ -7,6 +7,7 @@
 //
 
 #import "LJMessageController.h"
+#import "LJVisitorView.h"
 
 @interface LJMessageController ()
 
@@ -16,22 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setupUI2];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupUI2{
+    if (!self.isLogin) {
+        LJVisitorView *visitorView = (LJVisitorView *)self.view;
+        [visitorView setupUIWithImageName:@"visitordiscover_image_message" content:@"登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"];
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

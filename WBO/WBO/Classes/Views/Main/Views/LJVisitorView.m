@@ -17,7 +17,6 @@
 @property (nonatomic,strong) UILabel *contentLabel;
 @property (nonatomic,strong) UIButton *loginButton;
 @property (nonatomic,strong) UIButton *registerButton;
-
 @end
 
 @implementation LJVisitorView
@@ -27,6 +26,8 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor colorWithWhite:237/255.0 alpha:1];
         [self setupUI];
+        
+        [self setupFeedImageViewAnimation];
     }
     return self;
 }
@@ -62,6 +63,7 @@
         make.leading.equalTo(self.contentLabel);
         make.size.mas_equalTo(CGSizeMake(100, 36));
     }];
+    [self.loginButton addTarget:self action:@selector(loginClick) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:self.registerButton];
     [self.registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,9 +71,43 @@
         make.trailing.equalTo(self.contentLabel);
         make.size.mas_equalTo(CGSizeMake(100, 36));
     }];
+    [self.registerButton addTarget:self action:@selector(loginClick) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
+#pragma mark - 登录注册监听方法
+- (void)loginClick{
+    
+    if (self.loginBlock) {
+        self.loginBlock();
+    }
+}
+
+#pragma mark - 设置底层图片转动
+- (void)setupFeedImageViewAnimation{
+    
+    CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    
+    anim.toValue = @(M_PI * 2);
+    anim.duration = 10;
+    anim.repeatCount = MAXFLOAT;
+    anim.removedOnCompletion = NO;
+    
+    
+    [self.feedImageView.layer addAnimation:anim forKey:nil];
+}
+
+
+#pragma mark - 设置UI差异化接口
+- (void)setupUIWithImageName:(NSString *)imgName content:(NSString *)content{
+    if (imgName.length && content.length) {
+        self.homeImageView.image = [UIImage imageNamed:imgName];
+        self.contentLabel.text = content;
+        self.feedImageView.hidden = YES;
+    }else{
+        self.feedImageView.hidden = NO;
+    }
+}
 
 #pragma mark - 懒加载
 - (UIImageView *)feedImageView{

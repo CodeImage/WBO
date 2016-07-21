@@ -11,6 +11,7 @@
 #import "LJMessageController.h"
 #import "LJDiscoverController.h"
 #import "LJProfileController.h"
+#import "LJTabBar.h"
 
 @interface LJMainController ()
 
@@ -32,6 +33,8 @@
     [self addController:[LJMessageController new] withTitle:@"信息" andImageName:@"tabbar_message_center"];
     [self addController:[LJDiscoverController new] withTitle:@"发现" andImageName:@"tabbar_discover"];
     [self addController:[LJProfileController new] withTitle:@"我" andImageName:@"tabbar_profile"];
+    
+    [self setValue:[LJTabBar new] forKey:@"tabBar"];
     
 }
 

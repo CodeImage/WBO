@@ -10,4 +10,8 @@
 
 @interface LJVisitorView : UIView
 
+
+@property (nonatomic,copy) void(^loginBlock)();
+
+- (void)setupUIWithImageName:(NSString *)imgName content:(NSString *)content;
 @end
