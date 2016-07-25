@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, "8.0"
+
+#pod "<#PodName#>"
+
+target :'WBO' do
+ pod 'Masonry'
+ pod 'AFNetworking'
+ pod 'SDWebImage'
+end

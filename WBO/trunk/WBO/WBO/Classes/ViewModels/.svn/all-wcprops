@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/WBO/!svn/ver/4/trunk/WBO/WBO/Classes/ViewModels
+END
+LJHomeCellViewModel.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/WBO/!svn/ver/4/trunk/WBO/WBO/Classes/ViewModels/LJHomeCellViewModel.h
+END
+LJOAuthControllerViewModel.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/WBO/!svn/ver/4/trunk/WBO/WBO/Classes/ViewModels/LJOAuthControllerViewModel.m
+END
+LJHomeControllerViewModel.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/WBO/!svn/ver/4/trunk/WBO/WBO/Classes/ViewModels/LJHomeControllerViewModel.h
+END
+LJHomeCellViewModel.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/WBO/!svn/ver/4/trunk/WBO/WBO/Classes/ViewModels/LJHomeCellViewModel.m
+END
+LJHomeControllerViewModel.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/WBO/!svn/ver/4/trunk/WBO/WBO/Classes/ViewModels/LJHomeControllerViewModel.m
+END
+LJOAuthControllerViewModel.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/WBO/!svn/ver/2/trunk/WBO/WBO/Classes/ViewModels/LJOAuthControllerViewModel.h
+END

@@ -1,0 +1,143 @@
+10
+
+dir
+4
+http://Jack@192.168.0.119/svn/WBO/trunk/WBO/WBO/Assets.xcassets/TabBar
+http://Jack@192.168.0.119/svn/WBO
+
+
+
+2016-07-24T10:01:21.386984Z
+2
+Jack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2e864515-1f0b-164e-8f9a-44b16a905708
+
+tabbar_profile_selected.imageset
+dir
+
+tabbar_compose_transfer.imageset
+dir
+
+tabbar_compose_background_icon_return.imageset
+dir
+
+tabbar_compose_camera.imageset
+dir
+
+tabbar_discover.imageset
+dir
+
+tabbar_compose_photo.imageset
+dir
+
+tabbar_compose_shooting.imageset
+dir
+
+tabbar_message_center.imageset
+dir
+
+tabbar_compose_icon_add.imageset
+dir
+
+tabbar_compose_icon_add_highlighted.imageset
+dir
+
+tabbar_discover_selected.imageset
+dir
+
+tabbar_compose_review.imageset
+dir
+
+tabbar_compose_idea.imageset
+dir
+
+tabbar_compose_more.imageset
+dir
+
+tabbar_home.imageset
+dir
+
+tabbar_compose_weibo.imageset
+dir
+
+tabbar_compose_friend.imageset
+dir
+
+tabbar_message_center_selected.imageset
+dir
+
+Contents.json
+file
+
+
+
+
+2016-07-19T17:42:30.000000Z
+31cc68f34934a99c0b0c1bebde56309c
+2016-07-24T10:01:21.386984Z
+2
+Jack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+62
+
+compose_slogan.imageset
+dir
+
+tabbar_compose_button_highlighted.imageset
+dir
+
+tabbar_compose_button.imageset
+dir
+
+tabbar_home_selected.imageset
+dir
+
+tabbar_profile.imageset
+dir
+
+tabbar_compose_background_icon_close.imageset
+dir
+
+tabbar_compose_music.imageset
+dir
+
+tabbar_compose_lbs.imageset
+dir
+
+tabbar_compose_wbcamera.imageset
+dir
+

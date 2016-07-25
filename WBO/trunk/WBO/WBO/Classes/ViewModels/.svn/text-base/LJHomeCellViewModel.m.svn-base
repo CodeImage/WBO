@@ -1,0 +1,134 @@
+//
+//  LJHomeCellViewModel.m
+//  WBO
+//
+//  Created by JackLou on 7/25/16.
+//  Copyright © 2016 JackLou. All rights reserved.
+//
+
+#import "LJHomeCellViewModel.h"
+
+@implementation LJHomeCellViewModel
+
+- (instancetype)initWithStatusInfo:(LJStatusInfo *)statusInfo{
+    if (self = [super init]) {
+        self.statusInfo = statusInfo;
+        
+        [self setProcessedProperties];
+    }
+    
+    return self;
+}
+
+
+#pragma mark - 设置新增处理数据得到的属性
+- (void)setProcessedProperties{
+
+    self.rankImage = [self getRankImageWithMbrank:self.statusInfo.user.mbrank.integerValue];
+    self.avatarImage = [self getAvatarImageWithVerifiedType:self.statusInfo.user.verified_type.integerValue andGender:self.statusInfo.user.gender];
+    
+    self.source = [self getSourceWithSourceString:self.statusInfo.source];
+    
+    self.time = [self getTimeWithTimeString:self.statusInfo.created_at];
+}
+
+#pragma mark - 获取等级图片
+- (UIImage *)getRankImageWithMbrank:(NSInteger)mbrank{
+    
+    return [UIImage imageNamed:[NSString stringWithFormat:@"common_icon_membership_level%ld",mbrank]];
+}
+
+#pragma mark - 获取VIP图片
+/// 认证类型 -1：没有认证，1，认证用户，2,3,5: 企业认证，220: 达人
+/// 应该是verified_type，-1：未认证， 0：认证， 3：企业认证
+- (UIImage *)getAvatarImageWithVerifiedType:(NSInteger) verifiedType andGender:(NSString *)gender{
+    switch (verifiedType) {
+        case 0:
+            if ([gender isEqualToString:@"f"]) {
+                return [UIImage imageNamed:@"avatar_vgirl"];
+            }else{
+                return [UIImage imageNamed:@"avatar_vip"];
+            }
+            break;
+            
+        case 2:
+        case 3:
+        case 5:
+            return [UIImage imageNamed:@"avatar_enterprise_vip"];
+            break;
+            
+        case 220:
+            return [UIImage imageNamed:@"avatar_grassroot"];
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
+#pragma mark - 获取来源
+// "source": "<a href="http://weibo.com" rel="nofollow">新浪微博</a>"
+- (NSString *)getSourceWithSourceString:(NSString *)soucreString{
+    if (![soucreString containsString:@"\">"]) {
+        return nil;
+    }
+    
+    NSRange range1 = [soucreString rangeOfString:@"\">"];
+    NSRange range2 = [soucreString rangeOfString:@"</"];
+    
+    NSInteger location1 = range1.location + range1.length;
+    NSInteger location2 = range2.location + range2.length;
+    
+    NSInteger length = location2 - location1;
+    
+    NSRange range = NSMakeRange(location1, length);
+    
+    return [soucreString substringWithRange:range];
+}
+
+#pragma mark - 获取时间
+// "created_at": "Tue May 31 17:46:55 +0800 2011"
+- (NSString *)getTimeWithTimeString:(NSString *)timeString{
+    
+    if (!timeString.length) {
+        return nil;
+    }
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"EEE MMM dd HH:mm:ss Z yyyy";
+    
+    NSDate *publishDate = [dateFormatter dateFromString:timeString];
+    
+    NSDate *currentDate = [NSDate date];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit calendarUnit = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    
+    NSDateComponents *cmp = [calendar components:calendarUnit fromDate:publishDate toDate:currentDate options:0];
+    
+    
+    
+    if (cmp.day > 3) {
+        
+        NSDateFormatter *dateFormatter2 = [NSDateFormatter new];
+        dateFormatter2.dateFormat = @"MM月dd日";
+        
+        return [dateFormatter2 stringFromDate:publishDate];
+        
+    }else if (cmp.day > 0){
+        return [NSString stringWithFormat:@"%ld天前",cmp.day];
+    }else if (cmp.hour > 0){
+        return [NSString stringWithFormat:@"%ld小时前",cmp.hour];
+    }else if (cmp.minute > 0){
+        return [NSString stringWithFormat:@"%ld分钟前",cmp.minute];
+    }else if (cmp.second > 0){
+        return [NSString stringWithFormat:@"刚刚"];
+    }else{
+        return [NSString stringWithFormat:@"刚刚"];
+    }
+    
+}
+
+
+@end
